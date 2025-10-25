@@ -1,18 +1,37 @@
 import streamlit as st
-import pandas as pd
-from db_config import get_connection
+from frontend.customers_page import show_customers_page
+from frontend.restaurants_page import show_restaurant_page
+# from frontend.reservations_page import show_reservations_page
 
-# --- Connect to database ---
-conn = get_connection()
-cursor = conn.cursor(dictionary=True)
+st.set_page_config(page_title="Restaurant Management System", layout="wide")
 
 st.title("Restaurant Management System")
 
-tab1, tab2, tab3, tab4 = st.tabs(["Customers", "Restaurants", "Orders", "Reservations"])
+# --- Tabs ---
+tab_names = [
+    "Home", 
+    "Customers", 
+    "Restaurants", 
+    "Orders", 
+    "Reservations", 
+    "Tables", 
+    "Menu", 
+    "Waiter", 
+    "Order Item"
+]
 
-with tab1:
-    st.header("Customers")
-    cursor.execute("SELECT * FROM customer")
-    data = cursor.fetchall()
-    df = pd.DataFrame(data)
-    st.dataframe(df)
+tabs = st.tabs(tab_names)
+
+
+with tabs[0]:
+    st.header("Welcome to the Restaurant Management System")
+    st.write("""
+    This system helps you manage your restaurant operations efficiently.
+    Use the tabs above to navigate between Customers, Orders, Reservations, and more.
+    """)
+
+with tabs[1]:
+    show_customers_page()
+
+with tabs[2]:
+    show_restaurant_page()
