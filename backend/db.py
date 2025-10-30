@@ -22,3 +22,15 @@ def execute_query(query, params=None):
     cursor.close()
     conn.close()
     return result
+
+def call_procedure(proc_name, params=None):
+    conn = get_connection()
+    cursor = conn.cursor(dictionary=True)
+    try:
+        cursor.callproc(proc_name, params or [])
+        for result in cursor.stored_results():
+            return result.fetchall()
+    finally:
+        cursor.close()
+        conn.close()
+
