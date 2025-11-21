@@ -18,37 +18,6 @@ The backend includes modular Python files handling CRUD operations for each enti
 
 The system uses a MySQL database and Python (mysql-connector-python) for execution of queries.
 
-PROJECT STRUCTURE:
-Restaurant_Management_Project/
-│
-├── app.py                         # Main application runner (links frontend & backend)
-├── .gitignore
-│
-├── backend/                       # All database + CRUD logic
-│   ├── __pycache__/
-│   ├── customers.py
-│   ├── menu.py
-│   ├── order_items.py
-│   ├── orders.py
-│   ├── payment.py
-│   ├── reservations.py
-│   ├── restaurant.py
-│   ├── tables.py
-│   ├── waiter.py
-│   └── db.py                      # MySQL connection + execute_query()
-│
-├── frontend/                      # UI pages (Tkinter or console menu style)
-│   ├── __pycache__/
-│   ├── customers_page.py
-│   ├── menu_page.py
-│   ├── order_items_page.py
-│   ├── orders_page.py
-│   ├── payment_page.py
-│   ├── reservations_page.py
-│   ├── restaurants_page.py
-│   ├── tables_page.py
-│   └── waiter_page.py
-
 FEATURES:
 - Customer Management
     Add, update, delete, and list customers.
